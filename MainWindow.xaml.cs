@@ -17,8 +17,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OpenCV_SimpleBlobDetectorTester.ViewModels;
 
-namespace WpfApp1
+namespace OpenCV_SimpleBlobDetectorTester
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,6 +28,7 @@ namespace WpfApp1
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private Cursor _EyeDropperCursor;
         private MainViewModel _MainView;
         
         public MainViewModel MainView 
@@ -37,9 +39,10 @@ namespace WpfApp1
 
         public MainWindow()
         {
+            InitializeComponent();
+            _EyeDropperCursor = new Cursor(@"C:\VSCode\CSharp\OpenCVBlobDectionSlider\OpenCV_SimpleBlobDetectorTester\OpenCV_SimpleBlobDetectorTester\Assests\EyeDropper.cur", true);
             _MainView = new MainViewModel(this);
             DataContext = MainView;
-            InitializeComponent();
         }
 
         protected void OnPropertyChanged(string propertyName)
@@ -74,12 +77,26 @@ namespace WpfApp1
                     Source = new BitmapImage(new Uri(_MainView.ImgFilePath, UriKind.Absolute))
                 };
 
-                Canvas_Img.Children.Add(img);
-                Canvas.SetTop(img, 0);
-                Canvas.SetLeft(img, 0);
 
             }
             
+        }
+
+        private void Bttn_ColorPicker_Click(object sender, RoutedEventArgs e)
+        {
+            this.Cursor = _EyeDropperCursor;
+        }
+
+        private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (this.Cursor == _EyeDropperCursor)
+                this.Cursor = Cursors.Arrow;
+        }
+
+        private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.Cursor == _EyeDropperCursor)
+                this.Cursor = Cursors.Arrow;
         }
     }
 }

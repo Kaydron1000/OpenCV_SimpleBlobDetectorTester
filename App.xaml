@@ -1,12 +1,12 @@
-﻿<Application x:Class="WpfApp1.App"
+﻿<Application x:Class="OpenCV_SimpleBlobDetectorTester.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WpfApp1"
+             xmlns:local="clr-namespace:OpenCV_SimpleBlobDetectorTester"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Themes/RangeSlider.xaml"/>
+                <ResourceDictionary Source="/Controls/RangeSlider.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
